@@ -1,18 +1,13 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
-<<<<<<< HEAD
 BRANCH ?= "libiio-v0"
 SRCREV = "${@ "ba74e6c53007925ff714ed28a258b5aebf6a3ad4" if bb.utils.to_boolean(d.getVar('BB_NO_NETWORK')) else d.getVar('AUTOREV')}"
-=======
-BRANCH ?= "main"
-SRCREV = "${@ "1ae8815858d7ca07da2cb7db76ec3fbb1a84588a" if bb.utils.to_boolean(d.getVar('BB_NO_NETWORK')) else d.getVar('AUTOREV')}"
->>>>>>> 1308b45 (meta-adi-xilinx: enable libiio v1)
 # Just overwrite SRC_URI as we would need to delete the python bindings patch since it does not apply
 # (already fixed in 0.24) and we do not want to hardcode ';branch=master' so that we would also have to
 # remove that leaving the variable empty anyways.
 SRC_URI = "git://github.com/analogdevicesinc/libiio.git;protocol=https;branch=${BRANCH} \
            file://syvinitscript.patch \
 "
-PV = "1.0+git${SRCPV}"
+PV = "0.26+git${SRCPV}"
 
 EXTRA_OECMAKE += " \
 	${@bb.utils.contains('DISTRO_FEATURES', 'sysvinit', '-DWITH_SYSVINIT=on', '', d)} \

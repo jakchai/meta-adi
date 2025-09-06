@@ -5,7 +5,9 @@ IMAGE_INSTALL:append = " libiio  \
 			 pyadi-iio \
 			 avahi-daemon \
 			 fru-tools \
-			 jesd-status" 
+			 libad9361-iio \
+			 jesd-status \
+			 adrv9009-zu11eg-fan-control"
 
 IMAGE_INSTALL:remove:microblaze = "avahi-daemon pyadi-iio"
 
